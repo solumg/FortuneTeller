@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link href='https://fonts.googleapis.com/css?family=Poiret+One' rel='stylesheet' type='text/css'>
+    
+    <title>Den magiske kule</title>
+</head>
+
+<body>
+    
+    <div id="circle">
+    
+        <div id="textContainer">
+            
+            <p id="fortuneText"></p>
+        
+        </div>
+      
+    </div>
+    
+      
+    <script>
+    
+        (function(){
+            
+            var circle;
+            var textContainer;
+            var fortuneText;
+            
+            var textArray = ["Ikke se den nye Star Wars filmen. Stor ulykke vil deg da inntreffe!","Din lykken vil smile til deg i dag","Følg den hvite kanin","Gå ikke med frakk i dag","Passe deg for den gullfargede Teslaen"];
+            var textArrayCurrent = [];
+            
+            var init = function(){
+            
+                var setElements = function(){
+                    circle = document.getElementById("circle");
+                    textContainer = document.getElementById("textContainer");
+                    fortuneText = document.getElementById("fortuneText");
+                }();
+                
+                var setEvents = function(){
+                    circle.onclick = function(){
+                        setFortuneText();
+                    }
+                
+                }();
+                
+                
+                styleCircle();
+                StyleTextContainer();
+                styleText();
+                document.body.style.background = ("black");
+                
+            }();
+            
+//            function setNextFortuneText(){
+//                if(textIndex === textArray.length - 1){
+//                    textIndex = 0;
+//                }else{
+//                    textIndex++;
+//                }
+//                setFortuneText();
+//            }
+            
+            function setFortuneText() {
+//                var fortune = maksVerdi(textArray.length);
+                
+                fortuneText.innerHTML = maksVerdi();
+                
+            }
+            
+//            function getRandomText(maksVerdi){
+//                return Math.floor(Math.random() * maksVerdi);
+//            }
+            
+            
+            function rand(n) {
+                return (Math.random() * n)|0;
+            }
+            function maksVerdi() {
+                if (!textArrayCurrent.length){
+                    textArrayCurrent = textArray.slice();
+                }
+                return textArrayCurrent.splice(rand(textArrayCurrent.length), 1);
+            }
+            
+            
+            
+            function StyleTextContainer(){
+                textContainer.style.width = "600px";
+                textContainer.style.height = "300px";
+                textContainer.style.position = "fixed";
+                textContainer.style.top = "50%";
+                textContainer.style.left ="50%";
+                textContainer.style.marginTop = "-150px";
+                textContainer.style.marginLeft = "-300px";
+            }
+            
+            function styleCircle(){
+                circle.style.background = "blue";
+                circle.style.height = "800px";
+                circle.style.width = "800px";
+                circle.style.borderRadius = "50%";
+                circle.style.position = "fixed";
+                circle.style.top = "50%";
+                circle.style.left ="50%";
+                circle.style.marginTop = "-400px";
+                circle.style.marginLeft = "-400px";
+                circle.style.cursor = "pointer";
+                circle.style.boxShadow = "0px 0px 89px 41px rgba(255,255,0,0.35)";
+            }
+            
+            function styleText(){
+                fortuneText.style.fontFamily = "'Poiret One', serif";
+                fortuneText.style.fontSize = "50px";
+                fortuneText.style.color = "rgb(255, 255, 255)";
+                fortuneText.style.textAlign = "center";
+            }
+            
+            
+        }());
+    
+    
+    </script>
+</body>
+</html>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="stylesheet" href="">
